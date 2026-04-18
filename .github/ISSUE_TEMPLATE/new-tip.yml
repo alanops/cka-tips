@@ -1,0 +1,34 @@
+name: New tip
+description: Propose a CKA tip
+body:
+  - type: textarea
+    id: principle
+    attributes:
+      label: Principle
+      description: one sentence
+    validations:
+      required: true
+  - type: input
+    id: answer
+    attributes:
+      label: Answer (canonical kubectl/helm command)
+    validations:
+      required: true
+  - type: input
+    id: docs
+    attributes:
+      label: Docs URL
+    validations:
+      required: true
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options:
+        - cluster
+        - workloads
+        - networking
+        - storage
+        - troubleshooting
+    validations:
+      required: true
