@@ -1,0 +1,14 @@
+[
+  {
+    "id": "kubectl-set-image",
+    "domain": "workloads",
+    "subtopic": "deployments",
+    "principle": "Change a container image without editing YAML.",
+    "prompt": "Update deployment 'web' to use nginx:1.25.",
+    "answer": "kubectl set image deploy/web nginx=nginx:1.25",
+    "alternates": ["kubectl set image deployment/web nginx=nginx:1.25"],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set-image",
+    "difficulty": 1,
+    "missions": ["wrong-image"]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "domain", "subtopic", "principle", "prompt", "answer", "docs", "difficulty"],
+    "additionalProperties": false,
+    "properties": {
+      "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "domain": { "enum": ["cluster", "workloads", "networking", "storage", "troubleshooting"] },
+      "subtopic": { "type": "string", "minLength": 1 },
+      "principle": { "type": "string", "minLength": 10 },
+      "prompt": { "type": "string", "minLength": 5 },
+      "answer": { "type": "string", "minLength": 5 },
+      "alternates": { "type": "array", "items": { "type": "string" } },
+      "docs": { "type": "string", "format": "uri" },
+      "difficulty": { "type": "integer", "minimum": 1, "maximum": 3 },
+      "missions": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "uniqueItems": true
+}
