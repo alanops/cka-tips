@@ -10,5 +10,113 @@
     "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set-image",
     "difficulty": 1,
     "missions": ["wrong-image"]
+  },
+  {
+    "id": "kubectl-edit-live",
+    "domain": "workloads",
+    "subtopic": "deployments",
+    "principle": "Edit a running resource in your $EDITOR without creating a file.",
+    "prompt": "Open deployment 'web' in your editor to change replicas.",
+    "answer": "kubectl edit deploy web",
+    "alternates": ["kubectl edit deployment web"],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#edit",
+    "difficulty": 1,
+    "missions": []
+  },
+  {
+    "id": "kubectl-patch-replicas",
+    "domain": "workloads",
+    "subtopic": "deployments",
+    "principle": "Patch replicas on a deployment without touching YAML.",
+    "prompt": "Patch deployment 'web' to 5 replicas.",
+    "answer": "kubectl patch deploy web -p '{\"spec\":{\"replicas\":5}}'",
+    "alternates": ["kubectl patch deployment web -p '{\"spec\":{\"replicas\":5}}'"],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#patch",
+    "difficulty": 2,
+    "missions": ["traffic-surge"]
+  },
+  {
+    "id": "kubectl-set-env",
+    "domain": "workloads",
+    "subtopic": "config",
+    "principle": "Set or update environment variables on a workload imperatively.",
+    "prompt": "Set DB_HOST=postgres on deployment 'web'.",
+    "answer": "kubectl set env deploy/web DB_HOST=postgres",
+    "alternates": ["kubectl set env deployment/web DB_HOST=postgres"],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set-env",
+    "difficulty": 1,
+    "missions": []
+  },
+  {
+    "id": "kubectl-set-resources",
+    "domain": "workloads",
+    "subtopic": "resources",
+    "principle": "Set CPU and memory limits without editing YAML.",
+    "prompt": "Set limits cpu=200m and memory=256Mi on deployment 'web'.",
+    "answer": "kubectl set resources deploy/web --limits=cpu=200m,memory=256Mi",
+    "alternates": ["kubectl set resources deployment/web --limits=cpu=200m,memory=256Mi"],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set-resources",
+    "difficulty": 2,
+    "missions": []
+  },
+  {
+    "id": "kubectl-scale",
+    "domain": "workloads",
+    "subtopic": "deployments",
+    "principle": "Scale a workload imperatively.",
+    "prompt": "Scale deployment 'web' to 10 replicas.",
+    "answer": "kubectl scale deploy web --replicas=10",
+    "alternates": ["kubectl scale deployment web --replicas=10"],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale",
+    "difficulty": 1,
+    "missions": ["traffic-surge"]
+  },
+  {
+    "id": "kubectl-label",
+    "domain": "workloads",
+    "subtopic": "metadata",
+    "principle": "Apply or change labels imperatively.",
+    "prompt": "Label pod 'web-xyz' with env=prod.",
+    "answer": "kubectl label pod web-xyz env=prod",
+    "alternates": [],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#label",
+    "difficulty": 1,
+    "missions": []
+  },
+  {
+    "id": "kubectl-annotate",
+    "domain": "workloads",
+    "subtopic": "metadata",
+    "principle": "Apply or change annotations imperatively.",
+    "prompt": "Annotate deployment 'web' with owner=matt.",
+    "answer": "kubectl annotate deploy web owner=matt",
+    "alternates": ["kubectl annotate deployment web owner=matt"],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#annotate",
+    "difficulty": 1,
+    "missions": []
+  },
+  {
+    "id": "kubectl-dry-run-yaml",
+    "domain": "workloads",
+    "subtopic": "generators",
+    "principle": "Generate a resource YAML scaffold without creating the resource.",
+    "prompt": "Print YAML for a deployment named 'web' using image nginx, without creating it.",
+    "answer": "kubectl create deploy web --image=nginx --dry-run=client -o yaml",
+    "alternates": ["kubectl create deployment web --image=nginx --dry-run=client -o yaml"],
+    "docs": "https://kubernetes.io/docs/reference/kubectl/conventions/#generators",
+    "difficulty": 2,
+    "missions": []
+  },
+  {
+    "id": "kubectl-explain-recursive",
+    "domain": "troubleshooting",
+    "subtopic": "discovery",
+    "principle": "Discover the exact path of any field inside a spec.",
+    "prompt": "Show the full recursive field tree for pod.spec.containers.",
+    "answer": "kubectl explain pod.spec.containers --recursive",
+    "alternates": [],
+    "docs": "https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#explain",
+    "difficulty": 1,
+    "missions": []
   }
 ]
